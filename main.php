@@ -129,6 +129,70 @@ float: left;
 	$catBks->showBooks();
 ?>
 
+<?php
+  
+  class Cat_Books extends Dbh
+	{
+		protected function getAllBooks($sql){
+			
+			$result=$this->connect()->query($sql);
+			$numRows=$result->num_rows;
+			if($numRows>0){
+				while ($row=$result->fetch_assoc()) {
+					
+					echo '<div id="item">';
+					$data[]=$row;
+            echo '</div>';
+				}
+				return $data;
+			}
+		}
+		public function showBooks(){
+			
+			$sql="select * from books where category='romance'";
+			$datas=$this->getAllBooks($sql);
+			echo '<section class="my-5">';
+			echo '<div  class="py-5">';
+			echo '<h1 class="text-center">best Sellers</h1>';
+			echo '</div>';
+
+			//echo '<div style=" background-color: Turquoise;padding: 12px;color: Indigo;"><center><h2 style="font-weight:bold;">'.$cat.'</h2><p style="font-weight:bold;">~ O ~</p></center></div>';
+			//echo '<div style="margin: 20px;">';
+			foreach ($datas as $data) {
+?>
+ 
+<section class="my-5">
+
+	
+<div class="container-fluid">
+<div class="row">
+		
+		 <div class="col-lg-2 col-md-2 col-2">
+			<?php 
+			echo '<div class="card">';
+			 echo '<img class="card-img-top" src="books_images/'.$data['image'].'" alt="" height="300px" />';
+			 echo '<div class="card-body">';
+			 echo '<h6 class="card-title">'.$data['book_name'].'</h6>';
+			 echo '<p class="card-text"><h6>Volume 1 of the series <a href="view.php">view more</a></h6></p>';
+			echo '<center><a href="read.php" class="btn btn-primary">read now</a></center>';
+			
+
+			
+			echo '</div>';
+			
+		echo '</div>';
+		?>
+</div>
+		
+		
+</div>
+</div>	<?php	
+       }
+	}
+  }
+	$catBks=new Cat_Books();
+	$catBks->showBooks();
+?>
 </section>
 </body>
 </html>
