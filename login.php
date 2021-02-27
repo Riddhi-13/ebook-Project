@@ -1,6 +1,6 @@
 <?php include "init.php"; ?>
 <?php if(isset($_SESSION['id'])): ?>
-  <?php header("location:index.html"); ?>
+  <?php header("location:index.php"); ?>
   <?php endif; ?>
 <?php 
 if(isset($_POST['login'])){
@@ -36,7 +36,7 @@ if(isset($_POST['login'])){
 
       $_SESSION['login_success'] = "Hi ".$name . " You are successfully login";
       $_SESSION['id'] = $id;
-      header("location:index.html");
+      header("location:index.php");
  
      } else {
       $data['password_error'] = "Please enter correct password";
@@ -104,7 +104,7 @@ if(isset($_POST['login'])){
 
 								</div>
                         
-                            <input type="submit" class="butt" value="LOG IN">
+                            <input type="submit" name="login" class="butt" value="LOG IN &rarr;">
                          
                             <p id=loginid>Dont have an account?<a href="register.php">SIGNUP</a></p>
                         </form>

@@ -1,8 +1,8 @@
-<?php 
-include "init.php";
-if(isset($_SESSION['id'])){
-  header("location:index.html");
-}
+<?php include "init.php"; ?>
+<?php if(isset($_SESSION['id'])): ?>
+  <?php header("location:index.php"); ?>
+  <?php endif; ?>
+  <?php
 if(isset($_POST['signup'])){
    
    $data = [
@@ -35,7 +35,7 @@ if(isset($_POST['signup'])){
    } else {
     if($source->Query("SELECT * FROM reader WHERE email = ?", [$data['email']])){
       if($source->CountRows() > 0 ){
-        $data['email_error'] = "Sorry email is already exist";
+        $data['email_error'] = "Sorry email already exist";
       }
     }
    }
@@ -61,7 +61,7 @@ if(isset($_POST['signup'])){
      $password= password_hash($data['password'], PASSWORD_DEFAULT);
      if($source->Query("INSERT INTO reader (name,email,password) VALUES (?,?,?)", [$data['name'], $data['email'], $password])){
      $_SESSION['account_created'] = "Your account is successfully created";
-    header("location:index.html");
+    header("location:index.php");
      }
 
    }
@@ -110,7 +110,7 @@ if(isset($_POST['signup'])){
 
                             <div class="form-group">
                                 <i class="fas fa-lock"></i>
-                                <input class="myInput" type="password" name="password" id="password" placeholder="Password" required> 
+                                <input class="myInput"  placeholder="Password" type="password"  id="password" name="password" required> 
 								<div class="error">
 									<?php if(!empty($data['password_error'])): ?>
 									  <?php echo $data['password_error']; ?>
@@ -118,7 +118,7 @@ if(isset($_POST['signup'])){
 								  </div>
                             </div>
                             
-							 <input type="submit" name="signup" class="butt" value="CREATE ACCOUNT">
+							 <input type="submit" name="signup" class="butt" value="CREATE ACCOUNT &rarr;">
                             <p id=loginid>Already have an account?<a href="login.php">LOG IN</a></p>
                         </form>
                     </div>

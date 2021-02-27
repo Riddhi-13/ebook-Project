@@ -1,7 +1,9 @@
-<?php
-	include 'dbh.inc.php';
-?>
 <!DOCTYPE html>
+<?php
+session_start();
+include 'db.php';
+?>
+
 <html>
 <head>
 	<title>The Book Biz - eBook Reading website</title>
@@ -107,7 +109,7 @@ form.example::after {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link pr-4" href="index.html">Home </a>
+        <a class="nav-link pr-4" href="index.php">Home </a>
       </li>
       <li class="nav-item">
         <a class="nav-link pr-4" href="#">About</a>
@@ -119,8 +121,13 @@ form.example::after {
 	  <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>
 	</form>
      <form class="form-inline ml-auto">
+		<?php if(isset($_SESSION["id"])){?>
 		
-     	<a href="login.html" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
+         <a href="logout.php"class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Logout</a>
+		<?php }else{ ?>
+     	<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
+		<?php } ?>
+    
      	<!--<a href="my_library.html"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" > <i class="fas fa-shopping-cart" style="color:#fff;"></i><span id="cart_item" class="badge badge-danger"></span></a> -->
   </form>
 
