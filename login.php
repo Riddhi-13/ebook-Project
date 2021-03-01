@@ -35,7 +35,7 @@ if(isset($_POST['login'])){
 
       $_SESSION['login_success'] = "Hi ".$name . " You are successfully login";
       $_SESSION['id'] = $id;
-      header("location:index.php");
+      header("location:browse.php");
  
      } else {
       $data['password_error'] = "Please enter correct password";

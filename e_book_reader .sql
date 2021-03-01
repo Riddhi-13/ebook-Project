@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2021 at 06:35 AM
+-- Generation Time: Mar 01, 2021 at 07:04 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -47,7 +47,7 @@ CREATE TABLE `books` (
   `year_of_publication` int(4) NOT NULL,
   `description` longtext NOT NULL,
   `category` varchar(40) NOT NULL,
-  `image` varchar(40) NOT NULL
+  `image` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`ISBN_no`, `book_name`, `author`, `edition`, `publisher_name`, `year_of_publication`, `description`, `category`, `image`) VALUES
-('1000001', '21 days of effective communication', 'IAN TUHOVSKY', 1, 'Createspace Independent Publishing Platform', 2018, 'Discover how unlocking the hidden secrets to successful communication can create powerful, changes across all areas of your life.', 'Self development books', 'communication.jpg'),
+('1000001', '21 days of effective communication_ everyday habit', 'IAN TUHOVSKY', 1, 'Createspace Independent Publishing Platform', 2018, 'Discover how unlocking the hidden secrets to successful communication can create powerful, changes across all areas of your life.', 'Self development books', 'communication_ everyday.jpg'),
 ('1000002', 'Stop Procrastinating', 'NILS SALZGEBER', 1, 'Createspace Independent Publishing Platform', 2018, ' A Simple Guide to Hacking Laziness, Building Self Discipline, and Overcoming Procrastination', 'Self development books', 'Stop Procrastinating.jpg'),
 ('1000003', 'The now habit', 'NEIL FIORE', NULL, 'Penguin USA', 2007, 'A Strategic Program for Overcoming Procrastination and Enjoying Guilt-Free Play', 'Self development books', 'The now habit.jpg'),
 ('1000004', 'Daily Self-Discipline', 'Martin Meadows', NULL, 'Meadows Publishing', 2015, 'Everyday Habits and Exercises to Build Self-Discipline and Achieve Your Goals', 'Self development books', 'Daily Self-Discipline.jpg'),
@@ -84,17 +84,6 @@ INSERT INTO `books` (`ISBN_no`, `book_name`, `author`, `edition`, `publisher_nam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloads`
---
-
-CREATE TABLE `downloads` (
-  `email` varchar(30) NOT NULL,
-  `ISBN_no` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `manages`
 --
 
@@ -106,38 +95,30 @@ CREATE TABLE `manages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `my_library`
---
-
-CREATE TABLE `my_library` (
-  `email` varchar(30) NOT NULL,
-  `ISBN_no` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `reader`
 --
 
 CREATE TABLE `reader` (
+  `id` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `review`
+-- Dumping data for table `reader`
 --
 
-CREATE TABLE `review` (
-  `email` varchar(30) NOT NULL,
-  `ISBN_no` varchar(30) NOT NULL,
-  `date` date NOT NULL,
-  `content` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `reader` (`id`, `email`, `name`, `password`) VALUES
+(26, 'te@gmail.com', 'te', '$2y$10$VveontkEVtE1TiSldON70u89gUuVQKCqQsdCadtz0FxksmElcZ0pu'),
+(27, 'mca.1905@unigoa.ac.in', 'Riddhi', '$2y$10$HnICgFO7Lj3P1z.i6iWkuuyD6Ir0TJ6m3wWAKrtqlPGzDj5m4tPw2'),
+(28, 'sam@gmail.com', 'sam', '$2y$10$gVGWpwmdIOOEmaV.XavGCuNUvlqFdY8qsHF5Myn6gGw1eKtBX6R7K'),
+(29, 'rii@gm.com', 'riya', '$2y$10$yaSDWSa1kzLWrNuxY9LkmO.rMp5HWjI4U.YRMxq5NvF7n.4hgU876'),
+(30, 'rideg@gmail.com', 'rid', '$2y$10$Un0MZAIO2HgEedRtlF0emeK2zxXyE4RlCMiRysxmzM.7wxX5VYEk6'),
+(31, 'rinky@gmail.com', 'rinky', '$2y$10$U4Rk1eTxLs.ICQZpJvElseO5imq6YGF4bySksrdItKGb72/2aBRaC'),
+(32, 're@gmail.com', 'Riddhi', '$2y$10$6aTpxUwCNx1KlcBJvGcz2uKPRg.bk3Wn6.CJ6XwetLBqBqSm8k45O'),
+(33, 'raj@gmail.com', 'raj', '$2y$10$Ri2jP9gwpyt3bTHLofE6QupmvphKCHHpBLT2SynpZzaihA25p6jZK'),
+(34, 'd@gmail.com', 'doisy', '$2y$10$PRD7jk3wT3Qti7j.uPmueOacp8F69hyK49gDRIWFgQS3YwTa7OjmC');
 
 --
 -- Indexes for dumped tables
@@ -156,13 +137,6 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`ISBN_no`);
 
 --
--- Indexes for table `downloads`
---
-ALTER TABLE `downloads`
-  ADD PRIMARY KEY (`email`,`ISBN_no`),
-  ADD KEY `fk_books` (`ISBN_no`);
-
---
 -- Indexes for table `manages`
 --
 ALTER TABLE `manages`
@@ -170,56 +144,20 @@ ALTER TABLE `manages`
   ADD KEY `fk_manage_books` (`ISBN_no`);
 
 --
--- Indexes for table `my_library`
---
-ALTER TABLE `my_library`
-  ADD PRIMARY KEY (`email`,`ISBN_no`),
-  ADD KEY `fk_books_lib` (`ISBN_no`);
-
---
 -- Indexes for table `reader`
 --
 ALTER TABLE `reader`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `review`
---
-ALTER TABLE `review`
-  ADD PRIMARY KEY (`email`,`ISBN_no`),
-  ADD KEY `book_review` (`ISBN_no`);
-
---
--- Constraints for dumped tables
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Constraints for table `downloads`
+-- AUTO_INCREMENT for table `reader`
 --
-ALTER TABLE `downloads`
-  ADD CONSTRAINT `fk_books` FOREIGN KEY (`ISBN_no`) REFERENCES `books` (`ISBN_no`),
-  ADD CONSTRAINT `fk_reader` FOREIGN KEY (`email`) REFERENCES `reader` (`email`);
-
---
--- Constraints for table `manages`
---
-ALTER TABLE `manages`
-  ADD CONSTRAINT `fk_admin` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`),
-  ADD CONSTRAINT `fk_manage_books` FOREIGN KEY (`ISBN_no`) REFERENCES `books` (`ISBN_no`);
-
---
--- Constraints for table `my_library`
---
-ALTER TABLE `my_library`
-  ADD CONSTRAINT `fk_books_lib` FOREIGN KEY (`ISBN_no`) REFERENCES `books` (`ISBN_no`),
-  ADD CONSTRAINT `fk_reader_lib` FOREIGN KEY (`email`) REFERENCES `reader` (`email`);
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `book_review` FOREIGN KEY (`ISBN_no`) REFERENCES `books` (`ISBN_no`),
-  ADD CONSTRAINT `reader_review` FOREIGN KEY (`email`) REFERENCES `reader` (`email`);
+ALTER TABLE `reader`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
