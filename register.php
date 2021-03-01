@@ -1,8 +1,7 @@
-<?php include "init.php"; ?>
-<?php if(isset($_SESSION['id'])): ?>
-  <?php header("location:index.php"); ?>
-  <?php endif; ?>
+
   <?php
+  include_once 'init.php';
+  include 'header.php';
 if(isset($_POST['signup'])){
    
    $data = [
@@ -61,7 +60,7 @@ if(isset($_POST['signup'])){
      $password= password_hash($data['password'], PASSWORD_DEFAULT);
      if($source->Query("INSERT INTO reader (name,email,password) VALUES (?,?,?)", [$data['name'], $data['email'], $password])){
      $_SESSION['account_created'] = "Your account is successfully created";
-    header("location:index.php");
+    header("location:login.php");
      }
 
    }
@@ -75,11 +74,10 @@ if(isset($_POST['signup'])){
  <!DOCTYPE html>
 <head>
     <title>Sign Up Form</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+	
     <link rel="stylesheet" href="signup-boot.css">
 </head>
-<body> 
+
     <div class="container">
         <div class="myCard">
             <div class="row">

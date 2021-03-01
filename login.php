@@ -1,8 +1,7 @@
-<?php include "init.php"; ?>
-<?php if(isset($_SESSION['id'])): ?>
-  <?php header("location:index.php"); ?>
-  <?php endif; ?>
+
 <?php 
+include_once 'init.php';
+include 'header.php';
 if(isset($_POST['login'])){
 
  $data = [
@@ -56,12 +55,11 @@ if(isset($_POST['login'])){
  <!DOCTYPE html>
 <head>
     <title>Login Form </title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  
     <link rel="stylesheet" href="signup-boot.css">
     
 </head>
-<body> 
+
     <div class="container">
         <div class="myCard">
             <div class="row">
