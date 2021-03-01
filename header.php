@@ -121,10 +121,7 @@ form.example::after {
 	  <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>
 	</form>
      <form class="form-inline ml-auto">
-		<?php if(isset($_SESSION["id"])){?>
-		
-         <a href="logout.php"class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Hello <? = $_SESSION["name"] ?> || Logout</a>
-		<?php }else{ ?>
+		<?php if(isset($_SESSION["id"])){ ?>
      	<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
 		<?php } ?>
      

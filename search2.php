@@ -1,36 +1,12 @@
-<?php 
-include 'dbh.inc.php';
-session_start();
-if(isset($_SESSION['id'])){
- ?>
-
- 
-  
-<!DOCTYPE html>
-<html>
+<?php
+	include 'dbh.inc.php';
+?>
 <head>
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>The Book Biz - eBook Reading website</title>
 	
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-crossorigin="anonymous"></script>
-
-	<!-- Bootstrap files (jQuery first, then Popper.js, then Bootstrap JS) -->
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-
-
+	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-
-	
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 /// some script
 
@@ -42,6 +18,7 @@ $(document).ready(function() {
     $(document).on('click', '.dropdown-menu', function (e) {
       e.stopPropagation();
     });
+
     // make it as accordion for smaller screens
     if ($(window).width() < 992) {
       $('.dropdown-menu a').click(function(e){
@@ -56,10 +33,68 @@ $(document).ready(function() {
   }
   
 }); // jquery end
-</script>
+</script> 
 
 	<style type="text/css">
+	.carousel-caption {
+position:absolute;
+top:50%;
+transform: translateY(-80);
+left: 8%;
+
+	}
+	.navbar-custom{
+
+			background-color: #25003e /*#00CED1*/;
+			/*opacity: 0.5;*/
 	
+	}
+	.nav-link{
+		color: black;
+		font-size: 18px;
+
+	}
+	.font-size{
+		font-size: 18px;
+	}
+
+  .example{
+	  margin-top:5px;
+	margin-right:5px;
+	width:50%;
+	
+	}
+
+form.example input[type=text] {
+  padding: 9px;
+  font-size: 15px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 12px;
+  background: #bb36fd;
+  color: white;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+    background: linear-gradient(45deg, #c85bff, #b726ff);
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 	.navbar-custom{
 
 			background-color: #25003e /*#00CED1*/;
@@ -90,44 +125,6 @@ $(document).ready(function() {
 
 	.dropdown:hover .dropdown-content {
 		  display: block;
-	}
-	   .example{
-	margin-right:5px;
-	width:50%;
-	}
-
-form.example input[type=text] {
-  padding: 9px;
-  font-size: 15px;
-  border: 1px solid grey;
-  float: left;
-  width: 80%;
-  background: #f1f1f1;
-}
-
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 8px;
-  background: #bb36fd;
-  color: white;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
-
-form.example button:hover {
-    background: linear-gradient(45deg, #c85bff, #b726ff);
-}
-
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-	@media all and (min-width: 992px) {
-		.navbar{ padding-top: 0; padding-bottom: 0; }
-		.navbar .nav-link{ padding-top:1rem; padding-bottom:1rem;  }
 	}
 </style>
 </head>
@@ -169,7 +166,7 @@ form.example::after {
       <li class="nav-item active">
         <a class="nav-link pr-4" href="index.html">Home </a>
       </li>
-     <li class="nav-item dropdown">
+       <li class="nav-item dropdown">
         <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Browse</a>
         <ul class="dropdown-menu dropdown-menu-right dropdown-content">
        	<?php
@@ -177,6 +174,9 @@ form.example::after {
        	?>	 
         </ul>
     </li>
+     <!-- <li class="nav-item">
+        <a class="nav-link pr-4" href="#">About</a>
+      </li> -->
 
     </ul>
 	<form class="example" action="search2.php" method="POST" >
@@ -186,15 +186,68 @@ form.example::after {
      <form class="form-inline ml-auto">
 		
      	<a href="logout.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log out</a>
+     	<!--<a href="my_library.html"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" > <i class="fas fa-shopping-cart" style="color:#fff;"></i><span id="cart_item" class="badge badge-danger"></span></a> -->
   </form>
 
   </div>
 </nav>
-<?php 
-}
-else
-{
-	header("location:login.php");
-}
+<div>
+<?php 	
+	if(isset($_POST['submit-search'])){
+		$search = $_POST['search'];
+		$sql="SELECT * FROM books WHERE book_name LIKE '%$search%' OR author LIKE '%$search%'"; 
+		class Search extends Dbh
+	{
+		protected function getAllBooks($sql){
+			          
+			$result=$this->connect()->query($sql);
+			$numRows=$result->num_rows;
+			if($numRows>0){
+				while ($row=$result->fetch_assoc()) {
+					$data[]=$row;
+				}
+				return $data;
+			}
+		}
+		public function showSearchedBooks($sql){
+			$datas=$this->getAllBooks($sql);
+			if($datas>0){
+			
+			foreach ($datas as $data) {
+				
+			//echo "<li><a class='dropdown-item' href='displayBooks.php?category=".$data['category']."'>".$data['category']."</a></li>";
+			// echo "<h3>".$data['author']."</<h3>
+					  // <h3>".$data['book_name']."</h3>";
+					
+		?>	
+	<div style="padding: 20px; height: 370px;margin-left: 100px;margin-right: 100px;margin-top: 30px;box-shadow: 2px 4px 12px #888888;">
+	<?php
+		echo '<img src="books_images/'.$data['image'].'" alt="book" width="220px" height="290px" style="margin-left:50px;display: inline;float: left;" />';
+		echo '';
+  		echo '<div style="display: inline;float:left;margin-left: 20px;width: 72%;"><h4 style="font-weight:bold;">'.$data['book_name'].'</h4>';
+  		echo '<p style="font-size: 15px;"><b>Author:</b> '.$data['author'].'</p>';
+  		echo '<p style="font-size: 15px;"><b>Edition:</b> '.$data['edition'].'</p>';
+  		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
+  		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
+    	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
+    	echo '<button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></div>';
+    	echo '</div>';
+		  
+				}
+				
+			}
+			else{
+					//echo "no book found";
+					echo '<div class="container">';
+					// echo '<div class="well">no book found</div>';
+					 echo '<img src=images/not_found.png style="display:block;margin-left:auto;margin-right:auto">';
+					echo '</div>';
+				}
+		}
+	}
 
- ?>
+	$cat=new Search();
+	$cat->showSearchedBooks($sql);
+	}
+	?>
+</div>
