@@ -93,7 +93,7 @@
 		</div>
 		<div class="upload">
 		
-			<label for="img_upload">Image (.jpg)*</label>
+			<label for="img_upload">Image (.jpg/.jpeg)*</label>
 			<input type="file" class="form-control-file" id="img_upload" name="image" required>
 		
 		</div>

@@ -1,5 +1,5 @@
 <?php
-include 'dbh.inc.php';
+include '../dbh.inc.php';
 
 /*
  * 
@@ -30,7 +30,7 @@ public function addBkDetails(){
 			else{
 				//image file directory
 				
-				$target= "images/".basename($image);
+				$target= "../books_images/".basename($image);
 				$imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
 				if (file_exists($target)) {
 				  echo "Sorry, file already exists.Image cannot be uploaded";

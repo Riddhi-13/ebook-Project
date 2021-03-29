@@ -121,7 +121,7 @@
   </div>
 </nav>
 <div class="sidenav">
- <a href="display_books.php" target="main" class="active">Display All Books</a>
+ <a href="allBooks.php" target="main" class="active">Display All Books</a>
   <a href="addBooks.php" target="main">Add a Book</a>
   <a href="delete_book.php" target="main">Delete a Book</a>
   <a href="updateBooks.php" target="main">Update a book</a>
