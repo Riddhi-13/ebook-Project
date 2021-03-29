@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>updateBook</title>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		.container {
 	  			margin: 50px auto;
@@ -31,7 +31,7 @@
 <body>
 	<?php
 	
-	include 'dbh.inc.php';
+	include '../dbh.inc.php';
 	class BkDetails extends Dbh
 	{
 		public function getBkDetails($id)
@@ -66,9 +66,9 @@
 ?>
 	<div class="container">
 		<center><h2>Update Book Details</h2></center>
-		<form method="post">
+		<form action="updateResults.php" method="post" enctype="multipart/form-data">
 		<label for="isbnNo">ISBN No:</label>	
-		<input type="number"  class="form-control" name="isbnNo" value="<?php echo $data['ISBN_no']; ?>" readonly><br>
+ 		<input type="number"  class="form-control" name="isbnNo" value="<?php echo $data['ISBN_no']; ?>" readonly><br>
 		<label for="bookName">Book Name</label>
 		<input type="text"  class="form-control" name="bkTitle" value="<?php echo $data['book_name']; ?>" readonly><br><hr><br>
 		<?php foreach ($fields as $key => $value) { 
@@ -81,6 +81,9 @@
 			}
 			elseif (strcmp($value,"edition")==0) {
 				echo '<input type="number" class="form-control" name="'.$value.'" value="'.$data[$value].'"><br><br>';
+			}
+			elseif (strcmp($value,"image")==0) {
+				echo '<div class="custom-file mb-3"><input type="file" class="custom-file-input" name="'.$value.'" required> <label class="custom-file-label" for="'.$value.'">Choose file</label></div>';
 			}
 			else{
 				echo '<input type="text"  class="form-control" name="'.$value.'" value="'.$data[$value].'"><br><br>';
@@ -95,6 +98,12 @@
 		<center><input type="submit" class="btn btn-primary" value="Update" name="update" style="padding: 5px 50px;"></center>
 		<br>
 		</form>
+		<script type="text/javascript">
+			$(".custom-file-input").on("change", function() {
+			var fileName = $(this).val().split("\\").pop();
+			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+			});
+		</script>
 	</div>
 <?php
 	}
@@ -107,28 +116,6 @@
 		echo '</div>';
 	}
 }
-class updateBook extends Dbh
-	{
-		public function updateBkDetails($fields,$id)
-		{
-			echo '<div class="container"><center>';
-			foreach ($fields as $key => $value) {
-				$column=$_POST[$value];
-				$sql2="update books set ".$value."='".$column."' where ISBN_no=".$id.";";
-				$result=$this->connect()->query($sql2);
-				echo $value.' updated successfully..<br><br>';
-				
-			}
-			echo '<br><br><a href="updateBooks.php">Back</a>';
-			echo '</center></div>';
-		}
-	}
-	if (isset($_POST['update'])) {
-		$id=$_POST['isbnNo'];
-		$fields=$_POST['fields'];
-		$bkUpdate=new updateBook();
-		$bkUpdate->updateBkDetails($fields,$id);
-	}
 ?>
 
 </body>
