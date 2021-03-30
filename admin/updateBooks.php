@@ -73,6 +73,10 @@
 				<input type="checkbox" id="image" name="fields[]" value="image">
 			</div>
 			<label for="image">Image</label><br>
+			<div class="checkbox">
+				<input type="checkbox" id="pdf_name" name="fields[]" value="pdf_name">
+			</div>
+			<label for="pdf_name">Pdf File</label><br>
 			</div>
 		</div>
 		<br>

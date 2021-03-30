@@ -85,6 +85,9 @@
 			elseif (strcmp($value,"image")==0) {
 				echo '<div class="custom-file mb-3"><input type="file" class="custom-file-input" name="'.$value.'" required> <label class="custom-file-label" for="'.$value.'">Choose file</label></div>';
 			}
+			elseif (strcmp($value,"pdf_name")==0) {
+				echo '<div class="custom-file mb-3"><input type="file" class="custom-file-input" name="'.$value.'" required> <label class="custom-file-label" for="'.$value.'">Choose file</label></div>';
+			}
 			else{
 				echo '<input type="text"  class="form-control" name="'.$value.'" value="'.$data[$value].'"><br><br>';
 			}
