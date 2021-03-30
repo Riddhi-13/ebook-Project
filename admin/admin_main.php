@@ -127,5 +127,5 @@
   <a href="updateBooks.php" target="main">Update a book</a>
 </div>
 <div id="container">
-<iframe name="main" src="demo_iframe.htm" height="700px" width="100%"></iframe>
+<iframe name="main" src="allBooks.php" height="700px" width="100%"></iframe>
 </div>

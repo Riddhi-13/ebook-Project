@@ -25,13 +25,18 @@
 			div.left{
 				float:right;
 				margin-top:-75px;
-				margin-right:350px;
+				margin-right:550px;
 				width:15%;
 			}
-			div.upload{
+			div.upload_img{
 				float:right;
 				margin-top:-80px;
-				margin-left:200px;
+				margin-right:200px;
+			}
+			div.upload_pdf{
+				float:right;
+				margin-top:-80px;
+				margin-right:0px;
 			}
 			div.butt{
 				margin:0px auto;
@@ -45,7 +50,7 @@
 			}
 			
 			#category{
-				width:30%;
+				width:20%;
 			}
 			
 			
@@ -91,11 +96,15 @@
 		<label for="year">Year:</label>
 		<input type="number" class="form-control" id="year" name="year"  min="1850" max="2021" value="" required><br>
 		</div>
-		<div class="upload">
+		<div class="upload_img">
 		
 			<label for="img_upload">Image (.jpg/.jpeg)*</label>
 			<input type="file" class="form-control-file" id="img_upload" name="image" required>
-		
+			
+		</div>
+		<div class="upload_pdf">
+		<label for="pdf_upload">Upload pdf(.pdf)*</label>
+		<input type="file" class="form-control-file" id="pdf_upload" name="pdfs" required>
 		</div>
 		<div class="butt">
 		<input name="add" type="submit" class="btn btn-primary" style="padding: 5px 50px;font-size:18px;" value="ADD BOOK" name="submit">

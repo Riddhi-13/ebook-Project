@@ -19,6 +19,7 @@ public function addBkDetails(){
 			$category=$_POST["category"];
 			$year=$_POST["year"];
 			$image=$_FILES['image']['name'];
+			$pdf=$_FILES['pdfs']['name'];
 			
 			$s="select * from books where book_name='$bk_name' and edition='$edition'";
 			$result=$this->connect()->query($s);
@@ -26,28 +27,42 @@ public function addBkDetails(){
 			$num=mysqli_num_rows($result);
 			if($num==1){
 			   echo 'book already exist';
+			   
 			}
 			else{
 				//image file directory
 				
 				$target= "../books_images/".basename($image);
+				$target_pdf = "../books_pdfS/".basename($pdf);
 				$imageFileType = strtolower(pathinfo($target,PATHINFO_EXTENSION));
+				$pdfFileType = strtolower(pathinfo($target_pdf,PATHINFO_EXTENSION));
 				if (file_exists($target)) {
-				  echo "Sorry, file already exists.Image cannot be uploaded";
-				  
+				  echo "Sorry, Image file already exists.";
+				  $upload=0;
+				}
+				if (file_exists($target_pdf)) {
+				  echo "Sorry, pdf file already exists.";
+				   $upload=0;
 				}
 				//allow files of jpg and jpeg
-				else if($imageFileType != "jpg" && $imageFileType != "jpeg" ) {
-				  echo "Sorry, only JPG & JPEG files are allowed.Couldnt upload the file";
-				 
+				if($imageFileType != "jpg" && $imageFileType != "jpeg"){
+				  echo "Sorry, only JPG & JPEG files are allowed for Image file.";
+				  $upload=0;
 				}
-		
+				if ($pdfFileType != "pdf") {
+					echo "Sorry,only PDF files are allowed for books pdf.";
+					$upload=0;
+				}
+				if($upload==0){
+					
+					echo " Book details was not uploaded.";
+				}
 				else{
 				
-					$reg= "insert into books(book_name,author,edition,publisher_name,year_of_publication,description,category,image) values('$bk_name','$author','$edition','$publisher','$year','$description','$category','$image')";
+					$reg= "insert into books(book_name,author,edition,publisher_name,year_of_publication,description,category,image,pdf_name) values('$bk_name','$author','$edition','$publisher','$year','$description','$category','$image','$pdf')";
 					$result=$this->connect()->query($reg);
 					
-					if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+					if ((move_uploaded_file($_FILES['image']['tmp_name'], $target)) && (move_uploaded_file($_FILES['pdfs']['tmp_name'], $target_pdf))) {
 						echo "Book added successfully";
 					}else{
 						echo "Failed to add book";
