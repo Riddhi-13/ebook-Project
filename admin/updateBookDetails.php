@@ -72,23 +72,29 @@
 		<label for="bookName">Book Name</label>
 		<input type="text"  class="form-control" name="bkTitle" value="<?php echo $data['book_name']; ?>" readonly><br><hr><br>
 		<?php foreach ($fields as $key => $value) { 
-			echo '<label for="'.$value.'">'.$value.':</label>';
+			
 			if(strcmp($value,"description")==0){
+				echo '<label for="'.$value.'">'.$value.':</label>';
 				echo '<textarea id="description" class="form-control" name="description">'.$data[$value].'</textarea><br><br>';
 			}
 			elseif (strcmp($value,"year_of_publication")==0) {
+				echo '<label for="'.$value.'">'.$value.':</label>';
 				echo '<input type="number" min="1940" max="2021" class="form-control" name="'.$value.'" value="'.$data[$value].'"><br><br>';
 			}
 			elseif (strcmp($value,"edition")==0) {
-				echo '<input type="number" class="form-control" name="'.$value.'" value="'.$data[$value].'"><br><br>';
+				echo '<label for="'.$value.'">'.$value.':</label>';
+				echo '<input type="number" class="form-control" name="'.$value.'" value="'.$data[$value].'" min="1" max="10"><br><br>';
 			}
 			elseif (strcmp($value,"image")==0) {
+				echo '<label for="'.$value.'">'.$value.' [.jpg/.jpeg]'.':</label>';
 				echo '<div class="custom-file mb-3"><input type="file" class="custom-file-input" name="'.$value.'" required> <label class="custom-file-label" for="'.$value.'">Choose file</label></div>';
 			}
 			elseif (strcmp($value,"pdf_name")==0) {
+				echo '<label for="'.$value.'">'.$value.' [.pdf]'.':</label>';
 				echo '<div class="custom-file mb-3"><input type="file" class="custom-file-input" name="'.$value.'" required> <label class="custom-file-label" for="'.$value.'">Choose file</label></div>';
 			}
 			else{
+				echo '<label for="'.$value.'">'.$value.':</label>';
 				echo '<input type="text"  class="form-control" name="'.$value.'" value="'.$data[$value].'"><br><br>';
 			}
 			
