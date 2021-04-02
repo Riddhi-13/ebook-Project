@@ -1,3 +1,8 @@
+<?php 
+include '../dbh.inc.php';
+session_start();
+if(isset($_SESSION['email'])){
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,16 +112,14 @@
 	  <input type="text" placeholder="Search by book name, author...." name="search" required>
 	  <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>
 	</form>
-  <!--  <form class="form-inline ml-auto">-->
-    	<?php /* if(isset($_SESSION["id"])){*/?> 
+     <form class="form-inline ml-auto">
 		
-      <!--   <a href="logout.php"class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Hello <?/* = $_SESSION["name"]*/ ?> || Logout</a>
-		<?php /* }else{ */?>
-     	<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
-		<?php/* }*/?>
+		
+         <a href="../logout.php"class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i>Logout</a>
+		
      	<!--<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>-->
      	<!--<a href="my_library.html"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" > <i class="fas fa-shopping-cart" style="color:#fff;"></i><span id="cart_item" class="badge badge-danger"></span></a> -->
- <!-- </form> -->
+  </form>
 
   </div>
 </nav>
@@ -127,5 +130,13 @@
   <a href="updateBooks.php" target="main">Update a book</a>
 </div>
 <div id="container">
-<iframe name="main" src="allBooks.php" height="700px" width="100%"></iframe>
+<iframe name="main" src="demo_iframe.htm" height="700px" width="100%"></iframe>
 </div>
+<?php 
+}
+else
+{
+	header("location:../login.php");
+}
+
+ ?>

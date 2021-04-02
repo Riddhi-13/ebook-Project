@@ -1,4 +1,3 @@
-
 <?php 
 include_once 'init.php';
 include 'header.php';
@@ -31,15 +30,23 @@ if(isset($_POST['login'])){
      $id = $row->id;
      $db_password = $row->password;
      $name = $row->name;
+	 $email=$row->email;
      if(password_verify($data['password'], $db_password)){
 
-      $_SESSION['login_success'] = "Hi ".$name . " You are successfully login";
-      $_SESSION['id'] = $id;
-      header("location:browse.php");
- 
-     } else {
-      $data['password_error'] = "Please enter correct password";
-     }
+        $_SESSION['login_success'] = "Hi ".$name . " You are successfully login";
+        $_SESSION['email'] = $email;
+        $_SESSION['id'] = $id;
+        if(($email=='priyamajalikar@gmail.com')||($email=='riddhidegvekar@gmail.com')||($email=='tanvidessai@gmail.com')||($email=='doisydias@gmail.com'))
+        {
+        	header("location:admin/admin_main.php");
+        }
+        else{
+          header("location:browse.php");
+        }
+    } 
+        else {
+            $data['password_error'] = "Please enter correct password";
+        }
     } else {
       $data['email_error'] = "Please enter correct email";
     }
