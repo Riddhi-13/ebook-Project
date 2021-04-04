@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2021 at 08:12 PM
+-- Generation Time: Apr 04, 2021 at 09:33 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -20,17 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `e_book_reader`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `id` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -69,41 +58,18 @@ INSERT INTO `books` (`ISBN_no`, `book_name`, `author`, `edition`, `publisher_nam
 (1000201, 'Essentials of Medical Microbiology ', 'Rajesh Bhatia and Rattan Lal ichhpujani', 4, 'JAYPEE BROTHERS MEDICAL PUBLISHERS (P) LTD', 2008, 'Medical microbiology is the science which deals with the study of\r\norganisms that cause infectious diseases.', 'Educational books', 'Essentials of Medical Microbiology.jpg', 'Essentials of Medical Microbiology.pdf'),
 (1000202, 'Encyclopedia of Biology', 'Don Rittner , Timothy L. McCabe ', NULL, 'Facts On File Inc', 2004, 'The Encyclopedia of Biology pulls together the specialized terminology that has found its way into the language of the biologist', 'Educational books', 'Encyclopedia of Biology.jpg', 'Encyclopedia of Biology.pdf'),
 (1000203, 'Encyclopedia of Mathematics Education', 'Stephen Lerman', NULL, 'Springer Reference', 2014, 'The encyclopedia is intended to be a comprehensive reference text, covering\r\nevery topic in the field of mathematics education research with entries\r\nranging from short descriptions to much longer ones where the topic warrants\r\nmore elaboration.', 'Educational books', 'Encyclopedia of Mathematics.jpg', 'Encyclopedia of Mathematics Education.pdf'),
-(1000301, 'Grimms’ Fairy Tales', 'Jacob and ‎Wilhelm Grimm', 1, 'Maple Press', 2014, 'Popularly known as the \'Grimm Brothers\', Jacob and Wilhelm are well-received for their contribution in reviving the oral tradition of German folklore. In their attempt to preserve the Germanic literary tradition, they collected stories from the countryside, appealingly rewrote and published them as *Grimms’ Fairy Tales.*', 'Fantasy books', 'Grimms’ Fairy Tales.jpg', ''),
+(1000301, 'Grimms’ Fairy Tales', 'Jacob and ‎Wilhelm Grimm', 1, 'Maple Press', 2014, 'Popularly known as the \'Grimm Brothers\', Jacob and Wilhelm are well-received for their contribution in reviving the oral tradition of German folklore. In their attempt to preserve the Germanic literary tradition, they collected stories from the countryside, appealingly rewrote and published them as *Grimms’ Fairy Tales.*', 'Fantasy books', 'Grimms Fairy Tales.jpg', 'grimms-fairy-tales.pdf'),
 (1000302, 'alices-adventures-in-wonderland', 'Lewis Carroll', NULL, 'Puffin', 1865, 'On an ordinary summer\'s afternoon, Alice tumbles down a hole and an extraordinary adventure begins. In a strange world with even stranger characters, she meets a rabbit with a pocket watch, joins a Mad Hatter\'s Tea Party, and plays croquet with the Queen! Lost in this fantasy land, Alice finds herself growing more and more curious by the minute.....', 'Fantasy books', 'alices-adventures-in-wonderland.jpg', 'alices-adventures-in-wonderland.pdf'),
-(1000402, 'heart-of-darkness', 'Joseph Conrad', NULL, 'Green Integer ', 2003, 'Heart of Darkness, a novel by Joseph Conrad, was originally a three-part series in Blackwood\'s Magazine in 1899. It is a story within a story, following a character named Charlie Marlow, who recounts his adventure to a group of men onboard an anchored ship. ', 'Fantasy books', 'heart-of-darkness.jpg', ''),
+(1000402, 'heart-of-darkness', 'Joseph Conrad', NULL, 'Green Integer ', 2003, 'Heart of Darkness, a novel by Joseph Conrad, was originally a three-part series in Blackwood\'s Magazine in 1899. It is a story within a story, following a character named Charlie Marlow, who recounts his adventure to a group of men onboard an anchored ship. ', 'Fantasy books', 'heart-of-darkness.jpg', 'heart-of-darkness.pdf'),
 (1000501, 'The Rebel Doctor\'s Bride ', 'Sarah Morgan', NULL, 'Harlequin ', 2008, 'Bad boy surgeon Connor MacNeil is greeted with a less-than-sparkling welcome when he returns to his hometown as the local doctor and must put to rest his past demons when he and nurse Flora Harris discover a fiery attraction to each other.', 'Romance', 'rebbel_doctors_wife.jpg', 'The Rebel Doctor\'s Bride (Harlequin Medical Romance).pdf'),
 (1000502, 'Accidental Wife', 'Leclaire', NULL, 'Harlequin', 1996, 'Fairytale Weddings Trilogy', 'Romance', 'accidental_wife.jpg', 'Accidental Wife.pdf'),
 (1000503, 'The Bride\'s Baby', 'Liz Fielding', NULL, 'Harlequin', 2008, 'For 60 years, Harlequin has been\r\nproviding millions of women with\r\npure reading pleasure.\r\nWe hope you enjoy this great story!', 'Romance', 'the_brides_baby.jpg', 'The Bride\'s Baby (Harlequin Romance).pdf'),
 (1000601, 'The Classic Horror Stories', 'H. P. Lovecraft', NULL, 'OUP Oxford', 2016, 'This book is a testament to Lovecraft\'s enduring ability to thrill us while simultaneously scaring us stupid', 'Horror', 'classic horror stories.jpg', 'The Classic Horror Stories - H. P. Lovecraft.pdf'),
 (1000602, 'Year\'s Best Horror Stories XVIII ', 'Karl Edward Wagner, Les Edwards', 1, 'Karl Edward Wagner', 1990, 'Imagination can be a terrible revenge when a storybook\r\ncharacter takes on a life of his own....\r\nThese are just a few of the twenty-six dwelling places\r\nof terror you\'ll visit in', 'Horror', 'the_years_best _horror.jpg', 'Karl Edward Wagner - Year\'s Best Horror Stories.pdf'),
 (1000603, '51 Sleepless Nights', 'Tobias Wade', 2, 'Createspace Independent Publishing Platform', 2017, 'Thriller short story collection about Demons, Undead, Paranormal, Psychopaths, Ghosts, Aliens, and Mystery', 'Horror', '51_sleepless_nights.jpg', 'Horror Stories_ 51 Sleepless Nights_ Thriller.pdf'),
-(1000701, 'Art of Drawing The Human Body', 'Edgar Loy Fankbonner', NULL, 'Sterling', 2008, 'This sequel to Art of Drawing offers a large format, vibrant illustrations, and instruction.', 'Science Fiction', 'art of draing the humn body.jpg', ''),
+(1000701, 'Art of Drawing The Human Body', 'Edgar Loy Fankbonner', NULL, 'Sterling', 2008, 'This sequel to Art of Drawing offers a large format, vibrant illustrations, and instruction.', 'Science Fiction', 'art of draing the humn body.jpg', 'small-size-drawing-the-human-body.pdf'),
 (1000702, 'Knits for Nerds', 'Joan of Dark a.k.a Toni Carr', NULL, 'Andrews McMeel Publishing', 2012, '30 Projects_ Science Fiction, Comic Books, Fantasy', 'Science Fiction', 'knit for nerds.jpg', 'Knits for Nerds_ 30 Projects_ Science Fiction, Comic Books, Fantasy.pdf'),
 (1000703, 'Time Machine Tales', 'Paul J. Nahin', 1, 'Springer', 2016, 'The Science Fiction Adventures and Philosophical Puzzles of Time Travel', 'Science Fiction', 'the timemachine tales.jpg', 'Time Machine Tales.pdf');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `image`
---
-
-CREATE TABLE `image` (
-  `id` int(11) NOT NULL,
-  `img_name` int(11) NOT NULL,
-  `upload_time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `manages`
---
-
-CREATE TABLE `manages` (
-  `admin_id` varchar(50) NOT NULL,
-  `ISBN_no` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -139,29 +105,10 @@ INSERT INTO `reader` (`id`, `email`, `name`, `password`) VALUES
 --
 
 --
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`ISBN_no`);
-
---
--- Indexes for table `image`
---
-ALTER TABLE `image`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `manages`
---
-ALTER TABLE `manages`
-  ADD PRIMARY KEY (`admin_id`,`ISBN_no`),
-  ADD KEY `fk_manage_books` (`ISBN_no`);
 
 --
 -- Indexes for table `reader`
@@ -178,12 +125,6 @@ ALTER TABLE `reader`
 --
 ALTER TABLE `books`
   MODIFY `ISBN_no` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000730;
-
---
--- AUTO_INCREMENT for table `image`
---
-ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reader`

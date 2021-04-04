@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
         	header("location:admin/admin_main.php");
         }
         else{
-          header("location:browse.php");
+          header("location:updated_main.php");
         }
     } 
         else {
