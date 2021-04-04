@@ -109,7 +109,7 @@ form.example::after {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link pr-4" href="index.html">Home </a>
+        <a class="nav-link pr-4" href="index.php">Home </a>
       </li>
      <!-- <li class="nav-item">
         <a class="nav-link pr-4" href="#">About</a>
