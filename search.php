@@ -165,7 +165,7 @@ form.example::after {
   		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
   		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
     	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
-    	echo '<button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></div>';
+    	echo '<a href="login.php"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></div>';
     	echo '</div>';
 		  
 				}
