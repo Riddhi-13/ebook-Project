@@ -1,5 +1,6 @@
 <?php 
 include '../dbh.inc.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,7 @@ include '../dbh.inc.php';
 						<TD style="color:darkgreen" WIDTH='25%'><b><u>Author</u></b></TD>
 						<TD style="color:darkgreen" WIDTH='10%'><b><u>Isbn No</u></b></TD>			
 					
-						<TD style="color:darkgreen" WIDTH='25%'><b><u>Delete</u></b></TD>							
+						<TD style="color:darkgreen" WIDTH='25%'><b><u>Edition</u></b></TD>							
 						</tr>
 						<?php
 						
@@ -88,9 +89,8 @@ include '../dbh.inc.php';
 										<td>'.$data['book_name'].'
 										<td>'.$data['author'].'
 										<td>'.$data['ISBN_no'].'
-										
-										<td><a href="delete_book.php?sid='.$data['book_name'].'"><center><img src="../images/drop.png"  width="40px" height=40px" ></center></a>
-																			
+										<td>'.$data['edition'].'
+																	
 									</tr>';
 									$count++;
 	
@@ -123,20 +123,3 @@ include '../dbh.inc.php';
 
 </body>
 </html>
-<script>
-$(document).ready(function()
-{
-	$('.delete').click(function(){
-		var data = $(this).attr("img")
-		if(confirm ("Are you sure you want to delete this book?"))
-		{
-			window.location = "allBooks.php?delete=1&data="+data+"";
-			
-		}
-		else
-		{
-			return false;
-		}
-			});
-});
-</script>
