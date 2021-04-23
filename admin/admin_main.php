@@ -126,7 +126,7 @@ if(isset($_SESSION['email'])){
 <div class="sidenav">
  <a href="allBooks.php" target="main" class="active">Display All Books</a>
   <a href="addBooks.php" target="main">Add a Book</a>
-  <a href="delete_book.php" target="main">Delete a Book</a>
+  <a href="deleteBooks.php" target="main">Delete a Book</a>
   <a href="updateBooks.php" target="main">Update a book</a>
 </div>
 <div id="container">
