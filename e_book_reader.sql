@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2021 at 09:33 AM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Generation Time: Apr 29, 2021 at 12:46 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -98,7 +98,36 @@ INSERT INTO `reader` (`id`, `email`, `name`, `password`) VALUES
 (32, 're@gmail.com', 'Riddhi', '$2y$10$6aTpxUwCNx1KlcBJvGcz2uKPRg.bk3Wn6.CJ6XwetLBqBqSm8k45O'),
 (33, 'raj@gmail.com', 'raj', '$2y$10$Ri2jP9gwpyt3bTHLofE6QupmvphKCHHpBLT2SynpZzaihA25p6jZK'),
 (34, 'd@gmail.com', 'doisy', '$2y$10$PRD7jk3wT3Qti7j.uPmueOacp8F69hyK49gDRIWFgQS3YwTa7OjmC'),
-(35, 'tanvi@gmail.com', 'tanvi', '$2y$10$wTF5oLoXDJEG5akuhEYA4.5fF.FC68HCQnb7DXsij5PRG2mhAG5Hy');
+(35, 'tanvi@gmail.com', 'tanvi', '$2y$10$wTF5oLoXDJEG5akuhEYA4.5fF.FC68HCQnb7DXsij5PRG2mhAG5Hy'),
+(36, 'priya@gmail.com', 'Priya', '$2y$10$lJSTOcyIw1YTVFt8vrqfre9iG4TNgDfKFRZu3L2Wsvfp5YKOjrnIi'),
+(37, 'srushti@gmail.com', 'Srushti', '$2y$10$frdV.LRdDNjIARGh8o3slOG8z7RtoY6veepWlZLx4MjD2C9EqOt2i'),
+(39, 'priyamajalikar@gmail.com', 'Priya Majalikar', '$2y$10$oVAEwRPDsqq9..MX2wlLGemF25LGsNAOr.NmLBmXZz5e5uDIaHRu.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `ISBN_no` int(11) NOT NULL,
+  `review` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `ISBN_no`, `review`) VALUES
+(36, 1000002, 'good'),
+(36, 1000101, 'Nice book'),
+(36, 1000102, 'nice.'),
+(36, 1000202, 'nice book'),
+(36, 1000203, 'nice book'),
+(36, 1000301, 'good book'),
+(36, 1000601, 'nice'),
+(37, 1000101, 'Nice');
 
 --
 -- Indexes for dumped tables
@@ -117,6 +146,13 @@ ALTER TABLE `reader`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`,`ISBN_no`),
+  ADD KEY `ISBN_no` (`ISBN_no`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -130,7 +166,18 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `reader`
 --
 ALTER TABLE `reader`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`id`) REFERENCES `reader` (`id`),
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`ISBN_no`) REFERENCES `books` (`ISBN_no`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
