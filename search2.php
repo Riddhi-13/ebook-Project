@@ -232,7 +232,7 @@ form.example::after {
   		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
   		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
     	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
-    	echo '<a href="viewPdf.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><a href="downloadlogic.php?file_id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></a></div>';
+    	echo '<a href="viewPdf.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><a href="downloadlogic.php?file_id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></a><a href="viewReviews.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Reviews</button></a></div>';
     	echo '</div>';
 		  
 				}

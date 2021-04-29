@@ -1,5 +1,5 @@
 <?php
-	include 'dbh.inc.php';
+	include '../dbh.inc.php';
 ?>
 <head>
 	<title>The Book Biz - eBook Reading website</title>
@@ -107,7 +107,7 @@ form.example::after {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link pr-4" href="index.html">Home </a>
+        <a class="nav-link pr-4" href="admin_main.php">Home </a>
       </li>
      <!-- <li class="nav-item">
         <a class="nav-link pr-4" href="#">About</a>
@@ -118,71 +118,75 @@ form.example::after {
 	  <input type="text" placeholder="Search by book name, author...." name="search" required>
 	  <button type="submit" name="submit-search"><i class="fa fa-search"></i></button>
 	</form>
-     <form class="form-inline ml-auto">
+    <!--<form class="form-inline ml-auto">-->
 		
-     	<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
+     	<!--<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>-->
      	<!--<a href="my_library.html"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" > <i class="fas fa-shopping-cart" style="color:#fff;"></i><span id="cart_item" class="badge badge-danger"></span></a> -->
-  </form>
+  <!--</form>-->
 
   </div>
 </nav>
-<div>
-<?php 	
-	if(isset($_POST['submit-search'])){
-		$search = $_POST['search'];
-		$sql="SELECT * FROM books WHERE book_name LIKE '%$search%' OR author LIKE '%$search%'"; 
-		class Search extends Dbh
+
+<?php
+//include '../dbh.inc.php';
+class Reviews extends Dbh
 	{
-		protected function getAllBooks($sql){
-			          
+		public function getBookDetails($id){
+			$sql="select * from books where ISBN_no=".$id.";";
+			$result=$this->connect()->query($sql);
+			$numRows=$result->num_rows;
+			if($numRows>0){
+				return $result->fetch_assoc();
+			}
+		}
+		public function viewReviews($id){
+			$sql="select * from reviews where ISBN_no=".$id.";";
 			$result=$this->connect()->query($sql);
 			$numRows=$result->num_rows;
 			if($numRows>0){
 				while ($row=$result->fetch_assoc()) {
-					$data[]=$row;
+					$rv[]=$row;
 				}
-				return $data;
+				return $rv;
+			}
+			else
+				return false;
+		}
+		public function getReaderName($id){
+			$sql="select * from reader where id=".$id.";";
+			$result=$this->connect()->query($sql);
+			$numRows=$result->num_rows;
+			if($numRows>0){
+				return $result->fetch_assoc();
 			}
 		}
-		public function showSearchedBooks($sql){
-			$datas=$this->getAllBooks($sql);
-			if($datas>0){
-			
-			foreach ($datas as $data) {
-				
-			//echo "<li><a class='dropdown-item' href='displayBooks.php?category=".$data['category']."'>".$data['category']."</a></li>";
-			// echo "<h3>".$data['author']."</<h3>
-					  // <h3>".$data['book_name']."</h3>";
-					
-		?>	
-	<div style="padding: 20px; height: 370px;margin-left: 100px;margin-right: 100px;margin-top: 30px;box-shadow: 2px 4px 12px #888888;">
+		
+	}
+	$id= $_REQUEST['id'];
+	$bk=new Reviews();
+	$data=$bk->getBookDetails($id);
+	$readerReviews=$bk->viewReviews($id);
+?>
+<div style="padding: 20px; min-height: 570px;margin-bottom:10px;margin-left: 100px;margin-right: 100px;margin-top: 30px;box-shadow: 2px 4px 12px #888888;background-color:Linen;">
+	
 	<?php
-		echo '<img src="books_images/'.$data['image'].'" alt="book" width="220px" height="290px" style="margin-left:50px;display: inline;float: left;" />';
-		echo '';
-  		echo '<div style="display: inline;float:left;margin-left: 20px;width: 72%;"><h4 style="font-weight:bold;">'.$data['book_name'].'</h4>';
-  		echo '<p style="font-size: 15px;"><b>Author:</b> '.$data['author'].'</p>';
-  		echo '<p style="font-size: 15px;"><b>Edition:</b> '.$data['edition'].'</p>';
-  		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
-  		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
-    	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
-    	echo '<a href="login.php"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button><a href="viewReviewsWithoutLogin.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Reviews</button></a></div>';
-    	echo '</div>';
-		  
-				}
-				
+		echo '<img src="../books_images/'.$data['image'].'" alt="book" width="150px" height="200px" style="border: 1px solid;margin-left:4px;display: inline;" />'; 
+		echo '<div style="display: inline;padding: 5px;position:absolute;margin-left: 10px;margin-top: 2px;background-color: snow;border-radius:15px;width: 70%;height: 200px;">';
+		echo '<h3 style="color: MediumSeaGreen;margin-top: 2px;">'.$data['book_name'].'</h3>';
+		echo '<div style="font-weight:bold;">Author:'.$data['author'].'</div><br><div style="font-size:smaller;">Description:'.$data['description'].'</div><br></div>';
+		echo '<div style="margin-left: 8px;width: 81%;margin-top: 0px;position: absolute;min-height:400px;">';
+		echo '<h4 style="margin: 10px;">READERS REVIEWS</h4><hr>';
+		if($readerReviews!=false){
+			foreach ($readerReviews as $revs) {
+				$name=$bk->getReaderName($revs['id']);
+				echo '<div style="background-color: MediumAquaMarine;margin-top:10px;padding:10px;border-radius: 15px;">';
+				echo '<div style="font-weight:bold;">'.$name['name'].'</div><br>';
+				echo '<div>'.$revs['review'].'</div>';
+				echo '</div>';
 			}
-			else{
-					//echo "no book found";
-					echo '<div class="container">';
-					// echo '<div class="well">no book found</div>';
-					 echo '<img src=images/not_found.png style="display:block;margin-left:auto;margin-right:auto">';
-					echo '</div>';
-				}
 		}
-	}
-
-	$cat=new Search();
-	$cat->showSearchedBooks($sql);
-	}
+		echo '</div>';
 	?>
 </div>
+</body>
+</html>

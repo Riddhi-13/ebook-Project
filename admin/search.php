@@ -165,7 +165,8 @@ form.example::after {
   		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
   		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
     	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
-    	echo '</div>';
+    	echo '<a href="viewReviewsAdmin.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Reviews</button></a>';
+    	echo '</div></div>';
 		  
 				}
 				
