@@ -17,8 +17,9 @@
 			$cat= $_REQUEST['category'];
 			$sql="select * from books where category='".$cat."';";
 			$datas=$this->getAllBooks($sql);
-
-			echo '<div style=" background-color: Turquoise;padding: 12px;color: Indigo;"><center><h2 style="font-weight:bold;">'.$cat.'</h2><p style="font-weight:bold;">~ O ~</p></center></div>';
+			
+			echo '<div style=" background-color: Turquoise;padding: 21px;color: Indigo;"><center><h2 style="font-weight:bold;">'.$cat.'</h2><p style="font-weight:bold;margin-left:375px">~ O ~<b style="margin-right:100px;font-size:20px;float:right;">SORT BY:&#8645;<a href="displayAuthor.php?">Author</a>&#8645;<a href="displayBookName.php?">Book Name</a></b></p></center></div>';
+			
 			echo '<div style="margin: 20px;">';
 			foreach ($datas as $data) {
 ?>
