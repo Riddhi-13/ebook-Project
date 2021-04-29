@@ -125,7 +125,7 @@ form.example::after {
      	<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
 		<?php } ?>
      
-     	<!--<a href="my_library.html"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" > <i class="fas fa-shopping-cart" style="color:#fff;"></i><span id="cart_item" class="badge badge-danger"></span></a> -->
+<a href="library.php"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" ><i class="fa fa-book" aria-hidden="true" style="color:#fff"></i><span id="cart_item" class="badge badge-danger"></span> Library</a>
   </form>
 
   </div>

@@ -13,12 +13,17 @@
 				return $data;
 			}
 		}
+		
+		
 		public function showBooks(){
 			$cat= $_REQUEST['category'];
 			$sql="select * from books where category='".$cat."';";
 			$datas=$this->getAllBooks($sql);
+
+			echo '<div style=" background-color: Turquoise;padding: 21px;color: Indigo;"><center><h2 style="font-weight:bold;">'.$cat.'</h2>
+			<p style="font-weight:bold;margin-left:375px">~ O ~<b style="margin-right:100px;font-size:20px;float:right;">SORT BY:&#8645;
+			<a href="displayAuthor.php?">Author</a>&#8645;<a href="displayBookName.php?">Book Name</a></b></p></center></div>';
 			
-			echo '<div style=" background-color: Turquoise;padding: 21px;color: Indigo;"><center><h2 style="font-weight:bold;">'.$cat.'</h2><p style="font-weight:bold;margin-left:375px">~ O ~<b style="margin-right:100px;font-size:20px;float:right;">SORT BY:&#8645;<a href="displayAuthor.php?">Author</a>&#8645;<a href="displayBookName.php?">Book Name</a></b></p></center></div>';
 			
 			echo '<div style="margin: 20px;">';
 			foreach ($datas as $data) {
@@ -33,8 +38,21 @@
   		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
   		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
     	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
-    	echo '<a href="viewPdf.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><a href="downloadlogic.php?file_id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></a><a href="viewReviews.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Reviews</button></a></div>';
+    	echo '<a href="viewPdf.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a>
+		<a href="add_to_library.php?id='.$data['ISBN_no'].'"><button  class="btn btn-primary" style="display: inline;margin: 10px;" name="add_to_library">Add to library</button></a>
+		<a href="downloadlogic.php?file_id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></a>
+		<a href="viewReviews.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Reviews</button></a></div>';
     	echo '</div>';
+
+			}
+		}
+	}
+	$catBks=new CatBooks();
+	$catBks->showBooks();
+	echo "</div>";
+?>
+;
+		echo '</div>';
 
 			}
 		}

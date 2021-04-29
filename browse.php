@@ -167,7 +167,7 @@ form.example::after {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link pr-4" href="index.html">Home </a>
+        <a class="nav-link pr-4" href="updated_main.php">Home </a>
       </li>
      <li class="nav-item dropdown">
         <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Browse</a>
@@ -186,6 +186,7 @@ form.example::after {
      <form class="form-inline ml-auto">
 		
      	<a href="logout.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log out</a>
+		<a href="library.php"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" ><i class="fa fa-book" aria-hidden="true" style="color:#fff"></i><span id="cart_item" class="badge badge-danger"></span>  Library</a>
   </form>
 
   </div>

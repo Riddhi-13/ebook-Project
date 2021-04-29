@@ -107,7 +107,7 @@ form.example::after {
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link pr-4" href="index.html">Home </a>
+        <a class="nav-link pr-4" href="index.php">Home </a>
       </li>
      <!-- <li class="nav-item">
         <a class="nav-link pr-4" href="#">About</a>
@@ -122,6 +122,7 @@ form.example::after {
 		
      	<a href="login.php" class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size"> <i class="fas fa-user" style="color:#fff;"></i> Log in</a>
      	<!--<a href="my_library.html"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" > <i class="fas fa-shopping-cart" style="color:#fff;"></i><span id="cart_item" class="badge badge-danger"></span></a> -->
+		<a href="library.php"  class="btn btn-sm  text-secondary font-weight-bold pr-5 font-size" ><i class="fa fa-book" aria-hidden="true" style="color:#fff"></i><span id="cart_item" class="badge badge-danger"></span> Library</a>
   </form>
 
   </div>
@@ -165,7 +166,7 @@ form.example::after {
   		echo '<p style="font-size: 15px;"><b>Year of publication:</b> '.$data['year_of_publication'].'</p>';
   		echo '<p style="font-size: 15px;"><b>Publisher Name:</b> '.$data['publisher_name'].'</p>';
     	echo'<p style="font-size: 15px;">'.$data['description'].'</p>';
-    	echo '<a href="login.php"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button><a href="viewReviewsWithoutLogin.php?id='.$data['ISBN_no'].'"><button class="btn btn-primary" style="display: inline;margin: 10px;">Reviews</button></a></div>';
+    	echo '<a href="login.php"><button class="btn btn-primary" style="display: inline; margin: 10px;">Start reading</button></a><button class="btn btn-primary" style="display: inline;margin: 10px;">Add to library</button><button class="btn btn-primary" style="display: inline;margin: 10px;">Download</button></div>';
     	echo '</div>';
 		  
 				}

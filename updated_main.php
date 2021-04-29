@@ -83,7 +83,8 @@ echo '<div class="row">';
 			 echo '<img src="books_images/'.$data['image'].'" alt="" height="300px" />';
 		
 			 echo '<h6>'.$data['book_name'].'</h6>';
-			 echo '<center><a href="view.php class="btn btn-primary">view</a></center>';
+			 //echo '<center><a href="view.php class="btn btn-primary">view</a></center>';
+			 echo '<a href="viewPdf.php?id='.$data['ISBN_no'].'" class="btn btn-primary">Read now</a></center>';
 			//echo '<center><a href="read.php" class="btn btn-primary">read now</a></center>';
 			
 
