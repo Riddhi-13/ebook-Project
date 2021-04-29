@@ -128,6 +128,7 @@ if(isset($_SESSION['email'])){
   <a href="addBooks.php" target="main">Add a Book</a>
   <a href="deleteBooks.php" target="main">Delete a Book</a>
   <a href="updateBooks.php" target="main">Update a book</a>
+   <a href="display_feedback.php" target="main">View Feedback</a>
 </div>
 <div id="container">
 <iframe name="main" src="allBooks.php" height="700px" width="100%"></iframe>
