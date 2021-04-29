@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 29, 2021 at 12:46 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 29, 2021 at 11:59 AM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,8 +27,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `books`
 --
 
-CREATE TABLE `books` (
-  `ISBN_no` int(30) NOT NULL,
+DROP TABLE IF EXISTS `books`;
+CREATE TABLE IF NOT EXISTS `books` (
+  `ISBN_no` int(30) NOT NULL AUTO_INCREMENT,
   `book_name` varchar(50) NOT NULL,
   `author` varchar(80) NOT NULL,
   `edition` int(11) DEFAULT NULL,
@@ -37,8 +38,9 @@ CREATE TABLE `books` (
   `description` longtext NOT NULL,
   `category` varchar(40) NOT NULL,
   `image` varchar(80) NOT NULL,
-  `pdf_name` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `pdf_name` varchar(150) NOT NULL,
+  PRIMARY KEY (`ISBN_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=1000730 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `books`
@@ -77,12 +79,14 @@ INSERT INTO `books` (`ISBN_no`, `book_name`, `author`, `edition`, `publisher_nam
 -- Table structure for table `reader`
 --
 
-CREATE TABLE `reader` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `reader`;
+CREATE TABLE IF NOT EXISTS `reader` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reader`
@@ -101,7 +105,9 @@ INSERT INTO `reader` (`id`, `email`, `name`, `password`) VALUES
 (35, 'tanvi@gmail.com', 'tanvi', '$2y$10$wTF5oLoXDJEG5akuhEYA4.5fF.FC68HCQnb7DXsij5PRG2mhAG5Hy'),
 (36, 'priya@gmail.com', 'Priya', '$2y$10$lJSTOcyIw1YTVFt8vrqfre9iG4TNgDfKFRZu3L2Wsvfp5YKOjrnIi'),
 (37, 'srushti@gmail.com', 'Srushti', '$2y$10$frdV.LRdDNjIARGh8o3slOG8z7RtoY6veepWlZLx4MjD2C9EqOt2i'),
-(39, 'priyamajalikar@gmail.com', 'Priya Majalikar', '$2y$10$oVAEwRPDsqq9..MX2wlLGemF25LGsNAOr.NmLBmXZz5e5uDIaHRu.');
+(39, 'priyamajalikar@gmail.com', 'Priya Majalikar', '$2y$10$oVAEwRPDsqq9..MX2wlLGemF25LGsNAOr.NmLBmXZz5e5uDIaHRu.'),
+(40, 'doisydias@gmail.com', 'doisy dias', '$2y$10$yzDYIAIMZ4oXJLr4a7I9p.m.ONc7g2ILPdkiw1v70GgUmkLC52OMy'),
+(41, 'melvin@gmail.com', 'melvin', '$2y$10$BPGkzL3u30.T8jkMZV9Yu.bIwVDwH4uJtfX2.DdQ0uvfReL/jF/yS');
 
 -- --------------------------------------------------------
 
@@ -109,10 +115,13 @@ INSERT INTO `reader` (`id`, `email`, `name`, `password`) VALUES
 -- Table structure for table `reviews`
 --
 
-CREATE TABLE `reviews` (
+DROP TABLE IF EXISTS `reviews`;
+CREATE TABLE IF NOT EXISTS `reviews` (
   `id` int(11) NOT NULL,
   `ISBN_no` int(11) NOT NULL,
-  `review` varchar(200) NOT NULL
+  `review` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`,`ISBN_no`),
+  KEY `ISBN_no` (`ISBN_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -129,44 +138,32 @@ INSERT INTO `reviews` (`id`, `ISBN_no`, `review`) VALUES
 (36, 1000601, 'nice'),
 (37, 1000101, 'Nice');
 
---
--- Indexes for dumped tables
---
+-- --------------------------------------------------------
 
 --
--- Indexes for table `books`
---
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`ISBN_no`);
-
---
--- Indexes for table `reader`
---
-ALTER TABLE `reader`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`,`ISBN_no`),
-  ADD KEY `ISBN_no` (`ISBN_no`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Table structure for table `user_queries`
 --
 
---
--- AUTO_INCREMENT for table `books`
---
-ALTER TABLE `books`
-  MODIFY `ISBN_no` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000730;
+DROP TABLE IF EXISTS `user_queries`;
+CREATE TABLE IF NOT EXISTS `user_queries` (
+  `q_id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `subject` text NOT NULL,
+  `msg` longtext NOT NULL,
+  PRIMARY KEY (`q_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- AUTO_INCREMENT for table `reader`
+-- Dumping data for table `user_queries`
 --
-ALTER TABLE `reader`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+INSERT INTO `user_queries` (`q_id`, `name`, `email`, `subject`, `msg`) VALUES
+(1, 'mel', 'melvin@gmail.com', 'sugesstion', 'kjh'),
+(2, 'dd', 'p@gmail.com', 'sugesstion1', 'the website is good'),
+(3, 'tanvi', 'tanvi@gma.com', 'feedback', 'the overall websiite is good'),
+(4, 'ridhi', 'ridhi05@gmail.com', 'complain', 'some of the books in romance section do not get displayed properly'),
+(5, 'tanvita', 'tanvi@gma.com', 'complain', 'your overall website is good but there are some bugs which need to fix');
 
 --
 -- Constraints for dumped tables
