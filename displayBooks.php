@@ -51,13 +51,4 @@
 	$catBks->showBooks();
 	echo "</div>";
 ?>
-;
-		echo '</div>';
 
-			}
-		}
-	}
-	$catBks=new CatBooks();
-	$catBks->showBooks();
-	echo "</div>";
-?>
